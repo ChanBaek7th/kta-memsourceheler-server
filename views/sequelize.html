@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>시퀄라이즈 서버</title>
+    <style>
+      table { border: 1px solid black; border-collapse: collapse; }
+      table th, table td { border: 1px solid black; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form id="word-form">
+        <fieldset>
+          <legend>용어 등록</legend>
+          <div><input id="id" type="text" placeholder="아이디"></div>
+          <div><input id="ja" type="ja" placeholder="ja"></div>
+          <div><input id="en" type="en" placeholder="en"></div>
+          <button type="submit">등록</button>
+        </fieldset>
+      </form>
+    </div>
+    <br>
+    <table id="word-list">
+      <thead>
+      <tr>
+        <th>아이디</th>
+        <th>ja</th>
+        <th>en</th>
+        <th>생성</th>
+      </tr>
+      </thead>
+      <tbody>
+        {% for word in words %}
+        <tr>
+          <td>{{word.id}}</td>
+          <td>{{word.ja}}</td>
+          <td>{{word.en}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/sequelize.js"></script>
+  </body>
+</html>
